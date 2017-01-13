@@ -1,0 +1,62 @@
+table {
+  tr {
+    td, th {
+      max-width: 18vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+#registrationModal, #editModal {
+  .modal-dialog {
+    width: 300px;
+  }
+  .modal-body {
+    form {
+      display: flex;
+      flex-direction: column;
+      .well {
+        background-color: #fff;
+        border: none;
+        box-shadow: none;
+      }
+      .error {
+        color: red;
+        margin: 10px 0;
+      }
+      input {
+        margin-bottom: 10px;
+        padding: 2px 5px;
+        border: none;
+        border-bottom: 1px solid gray;
+      }
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  #registrationModal, #editModal {
+    .modal-dialog {
+      width: auto
+
+    }
+    .modal-body {
+      form {
+        display: flex;
+        flex-direction: column;
+        .well {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  .regBox {
+    float: left !important;
+    margin: 0 0 10px 0 !important;
+  }
+}
+
+
+

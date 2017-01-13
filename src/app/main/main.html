@@ -1,0 +1,81 @@
+<div class="container">
+
+
+  <div class="usersContainer">
+    <table class="table table-condensed table-bordered">
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date of birth</th>
+      </tr>
+      <tr ng-repeat="user in main.users track by $index" class="userRow" data-toggle="modal" data-target="#editModal" ng-click="main.handleUserClick(user);">
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}<span ng-if="!user.phone">No data</span></td>
+        <td>{{user.date | date: "dd/MM/yyyy"}}<span ng-if="!user.date">No data</span></td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div id="registrationModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Registration</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" name="registrationForm">
+          <input name="name" type="text" ng-model="main.user.name" placeholder="Name: " required="true">
+          <input name="surname" type="text" ng-model="main.user.surname" placeholder="Surname: " required="true">
+          <input name="email" type="email" ng-model="main.user.email" placeholder="Email: " required="true">
+          <div class="error" ng-if="registrationForm.email.$invalid && registrationForm.email.$dirty">Wrong email!</div>
+          <input name="phone" type="tel" ng-model="main.user.phone" ui-mask="+99(999)999-99-99">
+          <div>Date of birth: </div>
+          <div uib-datepicker ng-model="main.user.date" class="well well-sm" datepicker-options="main.options"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-disabled="registrationForm.name.$invalid ||
+registrationForm.surname.$invalid || registrationForm.email.$invalid || registrationForm.phone.$invalid" ng-click="main.addUser(main.user)" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit user</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" name="editForm">
+          <input name="name" type="text" ng-model="main.editUser.name" placeholder="Name: " required="true">
+          <input name="surname" type="text" ng-model="main.editUser.surname" placeholder="Surname: " required="true">
+          <input name="email" type="email" ng-model="main.editUser.email" placeholder="Email: " required="true">
+          <div class="error" ng-if="registrationForm.email.$invalid && registrationForm.email.$dirty">Wrong email!</div>
+          <input name="phone" type="tel" ng-model="main.editUser.phone" ui-mask="+99(999)999-99-99">
+          <div>Date of birth: </div>
+          <div uib-datepicker ng-model="main.editUser.date" class="well well-sm" datepicker-options="main.options"></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-disabled="editForm.name.$invalid ||
+editForm.surname.$invalid || editForm.email.$invalid || editForm.phone.$invalid" ng-click="main.updateDb()" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

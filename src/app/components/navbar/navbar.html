@@ -1,0 +1,25 @@
+<nav class="navbar navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        <span class="glyphicon glyphicon-home"></span> ProgForce
+      </a>
+    </div>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a>Home</a></li>
+        <li><button class="winnerBtn" ng-click="vm.getWinner()">Get Winner</button></li>
+        <li ng-if="vm.winner"><a class="winner">Current winner is {{vm.winner.name}} {{vm.winner.surname}}!</a></li>
+      </ul>
+      <div class="regBox">
+        <span data-toggle="modal" data-target="#registrationModal">Registration</span>
+      </div>
+    </div>
+
+  </div>
+</nav>
