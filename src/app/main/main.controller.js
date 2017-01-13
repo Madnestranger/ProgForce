@@ -34,6 +34,7 @@ export class MainController {
     user.id = (this.users.length + 1).toString();
     this.users.push(user);
     this.updateDb();
+    this.user = {};
     this.$scope.registrationForm.$setPristine();
     $("#registrationModal").modal('hide');
   }

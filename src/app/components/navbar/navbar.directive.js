@@ -19,9 +19,9 @@ class NavbarController {
   constructor (db) {
     'ngInject';
     this.db = db;
-    this.users = db.getItem('users');
   }
   getWinner() {
+    this.users = this.db.getItem('users');
     var randomIndex = Math.floor(Math.random() * (this.users.length));
     this.winner = this.users[randomIndex];
   }

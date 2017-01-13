@@ -9,7 +9,7 @@ export class LocalStorageService {
 
   getItem(itemName) {
     var allUsers = localStorage.getItem(itemName);
-    return $.parseJSON(allUsers);
+    return allUsers ? $.parseJSON(allUsers) : '';
   }
 
 }
